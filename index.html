@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>The Glow-Network - Official Mirrors & GlowWave FM</title>
+    <link rel="icon" type="image/png" href="the-glow-network.png">
+    <meta name="title" content="The Glow-Network - Official Mirrors & GlowWave FM">
+    <meta name="description" content="Access The Glow-Network's official mirrors. Stream movies, TV shows, and tune into our exclusive 24/7 radio station, GlowWave FM. Always stay connected.">
+    <meta name="keywords" content="Glow-Network, GlowTV, streaming site, watch movies online, TV shows, GlowWave FM, online radio, streaming network, official mirrors, proxy, unblock">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Glow-Network - Official Mirrors">
+    <meta property="og:description" content="Access The Glow-Network's official mirrors. Stream movies, TV shows, and tune into our exclusive 24/7 radio station, GlowWave FM.">
+    <meta property="og:url" content="https://glowlinks.net/">
+    <meta property="og:site_name" content="The Glow-Network">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="The Glow-Network - Official Mirrors">
+    <meta property="twitter:description" content="Access The Glow-Network's official mirrors. Stream movies, TV shows, and tune into our exclusive 24/7 radio station, GlowWave FM.">
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #050509;
+            color: #f5f5f5;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            overflow-x: hidden;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: linear-gradient(to bottom, #050509 80%, transparent);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+        .logo {
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #ff3b6b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo svg {
+            width: 28px;
+            height: 28px;
+            fill: #ff3b6b;
+        }
+        
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #11131a;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1px solid #262938;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        main {
+            padding: 0 24px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 40vh;
+            min-height: 320px;
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            background: #050509;
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            border: 1px solid #11131a;
+        }
+        .hero-backdrop {
+            position: absolute;
+            width: 150%;
+            height: 200%;
+            top: -50%;
+            left: -25%;
+            display: flex;
+            gap: 16px;
+            opacity: 0.40;
+            transform: rotate(-12deg);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .poster-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 180px;
+            animation: scrollVertDown 80s linear infinite;
+            will-change: transform;
+        }
+        .poster-column.reverse {
+            animation: scrollVertUp 90s linear infinite;
+        }
+        .poster-column img {
+            width: 100%;
+            border-radius: 8px;
+            aspect-ratio: 2/3;
+            object-fit: cover;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        
+        @keyframes scrollVertDown {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); } 
+        }
+        @keyframes scrollVertUp {
+            0% { transform: translateY(-50%); }
+            100% { transform: translateY(0); } 
+        }
+
+        .hero-gradient {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            /* Creates a vignette to seamlessly blend the scrolling posters into the dark theme while keeping text readable */
+            background: 
+                radial-gradient(circle at center, rgba(5,5,9,0.4) 0%, rgba(5,5,9,0.85) 60%, #050509 100%),
+                linear-gradient(to right, #050509 0%, transparent 20%, transparent 80%, #050509 100%),
+                linear-gradient(to bottom, #050509 0%, transparent 20%, transparent 80%, #050509 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+        .hero-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(90deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-overview {
+            font-size: 16px;
+            opacity: 0.7;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Mirrors Grid */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::before {
+            content: "";
+            display: block;
+            width: 4px;
+            height: 20px;
+            background: #ff3b6b;
+            border-radius: 4px;
+        }
+
+        .mirrors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .mirror-card {
+            background: #0b0d14;
+            border: 1px solid #262938;
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mirror-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 59, 107, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .mirror-card:hover {
+            border-color: #ff3b6b;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(255, 59, 107, 0.2);
+            background: #11131a;
+        }
+
+        .mirror-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .domain-type {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #ff3b6b;
+            background: rgba(255, 59, 107, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        .status-online {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .card-meta {
+            font-size: 14px;
+            color: #8b8d98;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .card-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            padding-top: 16px;
+            border-top: 1px solid #262938;
+            transition: color 0.2s ease;
+        }
+
+        .mirror-card:hover .card-action {
+            color: #ff3b6b;
+        }
+
+        .card-action svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.2s ease;
+        }
+
+        .mirror-card:hover .card-action svg {
+            transform: translateX(4px) translateY(-4px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px 24px;
+            color: #8b8d98;
+            font-size: 14px;
+            border-top: 1px solid #11131a;
+            margin-top: 40px;
+        }
+        .footer-logo {
+            color: #ff3b6b;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        /* Scrollbar styles */
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: #0b0d14; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #262938; border-radius: 10px; border: 2px solid #0b0d14; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff3b6b; }
+        * { scrollbar-width: thin; scrollbar-color: #262938 #0b0d14; }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 32px; }
+            .hero { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            The Glow-Network
+        </div>
+        <div class="status-badge">
+            <div class="pulse-dot"></div>
+            TGN Stable
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-backdrop"></div>
+            <div class="hero-gradient"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Official Portal & Mirrors</h1>
+                <p class="hero-overview">Always stay connected to our network. If one of our domains is unreachable or blocked in your region, please use any of the active official mirrors listed below.</p>
+            </div>
+        </section>
+
+        <h2 class="section-title">Active Domains</h2>
+        
+        <div class="mirrors-grid" id="mirrors-container">
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> <span class="footer-logo">The Glow-Network</span>. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        const mirrors = [
+            {
+                url: "https://glowlinks.net",
+                displayUrl: "glowlinks.net",
+                type: "Primary Network",
+                description: "Main server node. Best for users in North America and Europe.",
+                status: "Online"
+            },
+            {
+                url: "https://glowtv.org",
+                displayUrl: "glowtv.org",
+                type: "Backup Mirror",
+                description: "High-speed alternative relay. Recommended if the primary domain is blocked.",
+                status: "Online"
+            },
+            {
+                url: "https://glowtv.shop",
+                displayUrl: "glowtv.shop",
+                type: "Store & Access",
+                description: "Official store and alternative gateway access point.",
+                status: "Online"
+            }
+        ];
+
+        function renderMirrors() {
+            const container = document.getElementById('mirrors-container');
+            
+            container.innerHTML = mirrors.map(mirror => `
+                <a href="${mirror.url}" target="_blank" rel="noopener noreferrer" class="mirror-card">
+                    <div class="card-header">
+                        <span class="domain-type">${mirror.type}</span>
+                        <div class="status-online">
+                            <div style="width:6px;height:6px;background:#22c55e;border-radius:50%;"></div>
+                            ${mirror.status}
+                        </div>
+                    </div>
+                    <h3 class="card-title">${mirror.displayUrl}</h3>
+                    <p class="card-meta">${mirror.description}</p>
+                    
+                    <div class="card-action">
+                        Connect to Server
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+
+        function initHeroBackground() {
+            const backdrop = document.querySelector('.hero-backdrop');
+            
+            // Curated list of high-quality recent/popular movie posters
+            const posters = [
+                "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg", // Deadpool Wolverine
+                "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2TGbi205E.jpg", // Dune 2
+                "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg", // Inside out 2
+                "https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg", // Kingdom of Planet of Apes
+                "https://image.tmdb.org/t/p/w500/fdZpvZcgvSqBramRxw1T04K5BvR.jpg", // Twisters
+                "https://image.tmdb.org/t/p/w500/wTnV3PCVW5O92JMrFvvrRcV39RU.jpg", // The Iron Claw
+                "https://image.tmdb.org/t/p/w500/bxi1rUlaZntnE5oY2ZusnO0y4F7.jpg", // Oppenheimer
+                "https://image.tmdb.org/t/p/w500/A4j8S6moJS2zNtRR8oWF08gRnL5.jpg", // Five nights
+                "https://image.tmdb.org/t/p/w500/tMefBSflR6PGQLvLuPEqiKz0I1A.jpg", // Godzilla x Kong
+                "https://image.tmdb.org/t/p/w500/jdpGABXapiKV64Bw20hTjM63AWe.jpg", // Furiosa
+                "https://image.tmdb.org/t/p/w500/sh7Rg8Er3tFcN9BpKIPOMvALgZd.jpg", // Civil War
+                "https://image.tmdb.org/t/p/w500/z1p34vh7dEOnLDmyCrlUVLuoDcb.jpg", // Fall Guy
+                "https://image.tmdb.org/t/p/w500/xZNkAMjA1L8WBB4N86yDItWlFvG.jpg", // Bad Boys
+                "https://image.tmdb.org/t/p/w500/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg", // Kung Fu Panda 4
+                "https://image.tmdb.org/t/p/w500/cxevDYdeFkiixRShbObdwAHHva4.jpg", // Garfield
+                "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg", // Dark Knight
+                "https://image.tmdb.org/t/p/w500/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg", // 1917
+                "https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg", // LOTR
+                "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg", // Avengers
+                "https://image.tmdb.org/t/p/w500/fiVW06jE7z9YnO4trhaMEdclRVc.jpg"  // Inception
+            ];
+
+            const shuffle = (array) => [...array].sort(() => Math.random() - 0.5);
+            
+            for (let i = 0; i < 14; i++) {
+                const col = document.createElement('div');
+                col.className = 'poster-column' + (i % 2 !== 0 ? ' reverse' : '');
+                
+                let trackPosters = shuffle(posters);
+                trackPosters = [...trackPosters, ...trackPosters];
+
+                col.innerHTML = trackPosters.map(src => `<img src="${src}" alt="Movie Poster" loading="lazy" onerror="this.style.display='none'">`).join('');
+                backdrop.appendChild(col);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMirrors();
+            initHeroBackground();
+
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+
+</body>
+</html>
